@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\Player;
 
-class PLayerTest extends PHPUnit_Framework_TestCase
+class PlayerTest extends PHPUnit_Framework_TestCase
 {
     public function testPlayer()
     {
