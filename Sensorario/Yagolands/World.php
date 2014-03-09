@@ -6,13 +6,31 @@ class World
 {
     private $name;
 
+    private $map;
+
     public function __construct($name)
     {
         $this->name = $name;
+        $this->map = new Map(new Tile(0, 0), 2);
     }
 
     public function getName()
     {
         return $this->name;
+    }
+
+    public function countTiles()
+    {
+        return count($this->map->getTiles());
+    }
+
+    public function getTileAtIndex($index)
+    {
+        return $this->map->getTiles()[$index];
+    }
+
+    public function getMap()
+    {
+        return $this->map;
     }
 }
