@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Building;
 
 use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\Building\Barrack;
