@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Building;
+namespace Tests\Unit;
 
 use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\Builder;
@@ -31,12 +31,22 @@ class BuilderTest extends PHPUnit_Framework_TestCase
         return [
             [
                 'Sensorario\Yagolands\Building\Barrack',
-                [Resources::GRANO => 35, Resources::FERRO => 43, Resources::ARGILLA => 39, Resources::WOOD => 41,],
+                [
+                    Resources::GRANO => 35,
+                    Resources::FERRO => 43,
+                    Resources::ARGILLA => 39,
+                    Resources::WOOD => 41,
+                ],
                 158
             ],
             [
                 'Sensorario\Yagolands\Building\Castle',
-                [Resources::GRANO => 33, Resources::FERRO => 42, Resources::ARGILLA => 37, Resources::WOOD => 40,],
+                [
+                    Resources::GRANO => 33,
+                    Resources::FERRO => 42,
+                    Resources::ARGILLA => 37,
+                    Resources::WOOD => 40,
+                ],
                 152
             ],
         ];
