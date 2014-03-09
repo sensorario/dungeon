@@ -76,4 +76,9 @@ class Tile
         --$this->y;
         return $this;
     }
+
+    public function hasOwner()
+    {
+        return false;
+    }
 }

@@ -97,4 +97,10 @@ class TileTest extends PHPUnit_Framework_TestCase
             [0, 1, 0, 0],
         ];
     }
+
+    public function testTileHasNotOwner()
+    {
+        $tile = new Tile(0, 0);
+        $this->assertFalse($tile->hasOwner());
+    }
 }
