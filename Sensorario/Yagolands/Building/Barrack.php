@@ -2,6 +2,7 @@
 
 namespace Sensorario\Yagolands\Building;
 
+use Sensorario\Yagolands\Building\Building\Building;
 use Sensorario\Yagolands\Resources;
 
 class Barrack extends Building

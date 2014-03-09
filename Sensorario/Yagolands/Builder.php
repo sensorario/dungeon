@@ -3,7 +3,7 @@
 namespace Sensorario\Yagolands;
 
 use DateTime;
-use Sensorario\Yagolands\Building\Building;
+use Sensorario\Yagolands\Building\Building\Building;
 
 class Builder
 {

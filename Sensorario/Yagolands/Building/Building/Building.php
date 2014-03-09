@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensorario\Yagolands\Building;
+namespace Sensorario\Yagolands\Building\Building;
 
 abstract class Building
 {
