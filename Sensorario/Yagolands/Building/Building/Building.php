@@ -4,7 +4,7 @@ namespace Sensorario\Yagolands\Building\Building;
 
 abstract class Building
 {
-    public function resourceToNextLevel($resource, $level = 1)
+    public function resourceForLevel($resource, $level)
     {
         $return = $this->getBaseResources()[$resource];
 

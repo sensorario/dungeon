@@ -15,16 +15,16 @@ class BarrackTest extends PHPUnit_Framework_TestCase
     public function testBarrack()
     {
         $barrack = new Barrack();
-        $this->assertEquals(35, $barrack->resourceToNextLevel(Resources::GRANO));
-        $this->assertEquals(43, $barrack->resourceToNextLevel(Resources::FERRO));
-        $this->assertEquals(39, $barrack->resourceToNextLevel(Resources::ARGILLA));
-        $this->assertEquals(41, $barrack->resourceToNextLevel(Resources::WOOD));
+        $this->assertEquals(35, $barrack->resourceForLevel(Resources::GRANO, 1));
+        $this->assertEquals(43, $barrack->resourceForLevel(Resources::FERRO, 1));
+        $this->assertEquals(39, $barrack->resourceForLevel(Resources::ARGILLA, 1));
+        $this->assertEquals(41, $barrack->resourceForLevel(Resources::WOOD, 1));
     }
 
     public function testResourcesInLevels()
     {
         $barrack = new Barrack();
-        $this->assertEquals(35, $barrack->resourceToNextLevel(Resources::GRANO, 1));
-        $this->assertEquals(46, $barrack->resourceToNextLevel(Resources::GRANO, 2));
+        $this->assertEquals(35, $barrack->resourceForLevel(Resources::GRANO, 1));
+        $this->assertEquals(46, $barrack->resourceForLevel(Resources::GRANO, 2));
     }
 }
