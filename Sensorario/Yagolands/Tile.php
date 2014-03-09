@@ -8,6 +8,8 @@ class Tile
 
     private $y;
 
+    private $owner;
+
     public function __construct($x, $y)
     {
         $this->x = $x;
@@ -79,6 +81,11 @@ class Tile
 
     public function hasOwner()
     {
-        return false;
+        return $this->owner != null;
+    }
+
+    public function setOwner(Player $player)
+    {
+        $this->owner = $player;
     }
 }
