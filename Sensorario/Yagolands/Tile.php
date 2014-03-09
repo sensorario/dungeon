@@ -10,10 +10,13 @@ class Tile
 
     private $owner;
 
+    private $isBuildable;
+
     public function __construct($x, $y)
     {
         $this->x = $x;
         $this->y = $y;
+        $this->isBuildable = $x + $y > 0;
     }
 
     public function getCoordinates()
@@ -87,5 +90,10 @@ class Tile
     public function setOwner(Player $player)
     {
         $this->owner = $player;
+    }
+
+    public function isBuildable()
+    {
+        return $this->isBuildable;
     }
 }

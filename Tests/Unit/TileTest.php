@@ -114,4 +114,21 @@ class TileTest extends PHPUnit_Framework_TestCase
         $tile->setOwner($owner);
         $this->assertTrue($tile->hasOwner());
     }
+
+    /**
+     * @dataProvider buildable
+     */
+    public function testCenterTileIsNotBuildable($x, $y, $isBuildable)
+    {
+        $tile = new Tile($x, $y);
+        $this->assertEquals($isBuildable, $tile->isBuildable());
+    }
+
+    public function buildable()
+    {
+        return [
+            [0, 0, false],
+            [1, 0, true],
+        ];
+    }
 }
