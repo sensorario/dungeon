@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\Directions;
 use Sensorario\Yagolands\Tile;
 
@@ -9,7 +10,7 @@ use Sensorario\Yagolands\Tile;
  * Class TileTest
  * @package Tests\Unit
  */
-class TileTest extends \PHPUnit_Framework_TestCase
+class TileTest extends PHPUnit_Framework_TestCase
 {
     public function testTile()
     {

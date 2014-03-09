@@ -6,7 +6,7 @@ use Sensorario\Yagolands\Resources;
 
 class Castle extends Building
 {
-    protected function getBaseResources()
+    public function getBaseResources()
     {
         return [
             Resources::GRANO => 33,

@@ -6,7 +6,7 @@ use Sensorario\Yagolands\Resources;
 
 class Barrack extends Building
 {
-    protected function getBaseResources()
+    public function getBaseResources()
     {
         return [
             Resources::GRANO => 35,

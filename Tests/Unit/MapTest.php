@@ -2,10 +2,11 @@
 
 namespace Tests\Unit;
 
+use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\Tile;
 use Sensorario\Yagolands\Map;
 
-class MapTest extends \PHPUnit_Framework_TestCase
+class MapTest extends PHPUnit_Framework_TestCase
 {
     public function testTileIsCoordinateWithPosition()
     {
