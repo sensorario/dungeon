@@ -107,6 +107,7 @@ class TileTest extends PHPUnit_Framework_TestCase
     public function testTileCanBeOwned()
     {
         $owner = $this->getMockBuilder('Sensorario\Yagolands\Player')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $tile = new Tile(3, 4);
