@@ -33,4 +33,14 @@ class World
     {
         return $this->map;
     }
+
+    public function addPlayer(Player $player)
+    {
+        $this->players[] = $player;
+    }
+
+    public function countPlayers()
+    {
+        return count($this->players);
+    }
 }

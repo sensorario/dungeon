@@ -27,4 +27,20 @@ class WorldTest extends \PHPUnit_Framework_TestCase
         $world = new World('yagolands');
         $this->assertEquals('Sensorario\Yagolands\Map', get_class($world->getMap()));
     }
+
+    public function testAddPlayersToWorld()
+    {
+        $demo = $this->getMockBuilder('Sensorario\Yagolands\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $john = $this->getMockBuilder('Sensorario\Yagolands\Player')
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $world = new World('yagolands');
+        $world->addPlayer($demo);
+        $world->addPlayer($john);
+        $this->assertEquals(2, $world->countPlayers());
+    }
 }
