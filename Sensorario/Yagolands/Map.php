@@ -21,7 +21,7 @@ class Map
         }
     }
 
-    public function getTiles()
+    public function getTilesCoordinate()
     {
         return $this->tiles;
     }

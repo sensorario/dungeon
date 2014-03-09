@@ -21,12 +21,12 @@ class World
 
     public function countTiles()
     {
-        return count($this->map->getTiles());
+        return count($this->map->getTilesCoordinate());
     }
 
     public function getTileAtIndex($index)
     {
-        return $this->map->getTiles()[$index];
+        return $this->map->getTilesCoordinate()[$index];
     }
 
     public function getMap()
