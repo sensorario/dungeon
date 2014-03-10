@@ -52,4 +52,9 @@ class Map
 
         return false;
     }
+
+    public function addTile(Tile $tile, $distance)
+    {
+        $this->tiles[] = [$tile->getCoordinates(), $distance];
+    }
 }

@@ -99,4 +99,24 @@ class MapTest extends PHPUnit_Framework_TestCase
             [4, 4, false],
         ];
     }
+
+    public function testAddTile()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $map->addTile(new Tile(2, 1), 1);
+        $this->assertEquals(
+            [
+                [[0, 0], 0], // centro
+                [[1, 0], 1], // primo girone
+                [[0, -1], 1],
+                [[-1, -1], 1],
+                [[-1, 0], 1],
+                [[-1, 1], 1],
+                [[0, 1], 1],
+                [[2, 1], 1], // terzo girone
+            ],
+            $map->getTiles()
+        );
+    }
 }
