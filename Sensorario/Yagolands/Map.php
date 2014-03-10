@@ -57,4 +57,9 @@ class Map
     {
         $this->tiles[] = [$tile->getCoordinates(), $distance];
     }
+
+    public function getDistanceAtIndex($index)
+    {
+        return $this->getTiles()[$index][1];
+    }
 }
