@@ -41,4 +41,15 @@ class Map
     {
         $this->tiles[$tile][1] = $distance;
     }
+
+    public function tileExists(Tile $tileToFind)
+    {
+        foreach ($this->tiles as $tile) {
+            if ($tile[0] == $tileToFind->getCoordinates()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
