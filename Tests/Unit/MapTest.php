@@ -147,4 +147,13 @@ class MapTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $map->getDistanceAtCoordinate(1, 0));
         $this->assertEquals(1, $map->getDistanceAtCoordinate(-1, 0));
     }
+
+    public function testGetTileIndexFromCoordinate()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $this->assertEquals(0, $map->getTileIndexFromCoordinate(0, 0));
+        $this->assertEquals(1, $map->getTileIndexFromCoordinate(1, 0));
+        $this->assertEquals(4, $map->getTileIndexFromCoordinate(-1, 0));
+    }
 }

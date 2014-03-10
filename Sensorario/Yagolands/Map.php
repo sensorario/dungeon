@@ -76,4 +76,13 @@ class Map
             }
         }
     }
+
+    public function getTileIndexFromCoordinate($x, $y)
+    {
+        foreach ($this->tiles as $index => $tile) {
+            if ([$x, $y] == $tile[0]) {
+                return $index;
+            }
+        }
+    }
 }
