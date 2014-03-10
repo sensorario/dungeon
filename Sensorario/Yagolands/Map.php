@@ -8,20 +8,23 @@ class Map
 
     public function __construct(Tile $coordinate, $rounds)
     {
+        $distance = 0;
+
         $this->tiles[] = [
             $coordinate->getCoordinates(),
-            $coordinate->isBuildable()
+            $distance
         ];
 
         for ($i = 1; $i < $rounds; $i++) {
             $coordinate->move(Directions::RIGHT_UP);
+            $distance += 1;
 
             foreach (Directions::getDirections() as $direction) {
                 for ($j = 0; $j < $i; $j++) {
                     $moved = $coordinate->move($direction);
                     $this->tiles[] = [
                         $moved->getCoordinates(),
-                        $moved->isBuildable()
+                        $distance
                     ];
                 }
             }

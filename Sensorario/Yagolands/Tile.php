@@ -88,9 +88,4 @@ class Tile
     {
         $this->owner = $player;
     }
-
-    public function isBuildable()
-    {
-        return !($this->x == 0 && $this->y == 0);
-    }
 }

@@ -11,8 +11,8 @@ class MapTest extends PHPUnit_Framework_TestCase
     public function testTileIsCoordinateWithPosition()
     {
         $tile = new Map(new Tile(2, 3), 1);
-        $this->assertEquals([0 => [[2, 3], 1]], $tile->getTiles());
-        $this->assertEquals([[[2, 3], 1]], $tile->getTiles());
+        $this->assertEquals([0 => [[2, 3], 0]], $tile->getTiles());
+        $this->assertEquals([[[2, 3], 0]], $tile->getTiles());
     }
 
     public function testRounds()
@@ -44,18 +44,18 @@ class MapTest extends PHPUnit_Framework_TestCase
                 [[-1, 0], 1],
                 [[-1, 1], 1],
                 [[0, 1], 1],
-                [[1, 1], 1], // secondo girone
-                [[2, 0], 1],
-                [[1, -1], 1],
-                [[1, -2], 1],
-                [[0, -2], 1],
-                [[-1, -2], 1],
-                [[-2, -1], 1],
-                [[-2, 0], 1],
-                [[-2, 1], 1],
-                [[-1, 2], 1],
-                [[0, 2], 1],
-                [[1, 2], 1],
+                [[1, 1], 2], // secondo girone
+                [[2, 0], 2],
+                [[1, -1], 2],
+                [[1, -2], 2],
+                [[0, -2], 2],
+                [[-1, -2], 2],
+                [[-2, -1], 2],
+                [[-2, 0], 2],
+                [[-2, 1], 2],
+                [[-1, 2], 2],
+                [[0, 2], 2],
+                [[1, 2], 2],
             ],
             $tile->getTiles()
         );
