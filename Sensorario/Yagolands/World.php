@@ -43,4 +43,18 @@ class World
     {
         return count($this->players);
     }
+
+    public function findFreeIndex()
+    {
+        $tiles = $this->getMap()->getTiles();
+        foreach ($tiles as $index => $tile) {
+            if ($tile[1] == 2) {
+                return $index;
+            }
+        }
+    }
+
+    public function buildAroundAnIndex($index)
+    {
+    }
 }

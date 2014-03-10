@@ -47,4 +47,11 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $world->addPlayer($john);
         $this->assertEquals(2, $world->countPlayers());
     }
+
+    public function testFindFirstFreeTile()
+    {
+        $world = new World('yagolands');
+        $freeIndex = $world->findFreeIndex();
+        $this->assertEquals(7, $freeIndex);
+    }
 }
