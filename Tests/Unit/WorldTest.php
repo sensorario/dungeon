@@ -111,4 +111,25 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $world->buildAroundTileAtIndex($world->findFreeIndex());
         $this->assertTrue(true === $world->freeIndexIsRandom());
     }
+
+    public function testWorldGrowRandomly()
+    {
+        $yagolands = new World('yagolands');
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+
+        $threegates = new World('threegates');
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+
+        $this->assertFalse($yagolands->getMap() == $threegates->getMap());
+    }
 }
