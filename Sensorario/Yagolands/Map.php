@@ -67,4 +67,13 @@ class Map
     {
         return $this->getTiles()[$index];
     }
+
+    public function getDistanceAtCoordinate($x, $y)
+    {
+        foreach ($this->tiles as $tile) {
+            if ([$x, $y] == $tile[0]) {
+                return $tile[1];
+            }
+        }
+    }
 }
