@@ -22,7 +22,7 @@ class WorldTest extends PHPUnit_Framework_TestCase
 
         $world = new World('yagolands');
         $this->assertEquals('yagolands', $world->getName());
-        $this->assertEquals(7, $world->countTiles());
+        $this->assertEquals(19, $world->countTiles());
         $this->assertEquals([$tile->getCoordinates(), $tile->isBuildable()], $world->getTileAtIndex(0));
     }
 

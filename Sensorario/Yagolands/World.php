@@ -11,7 +11,7 @@ class World
     public function __construct($name)
     {
         $this->name = $name;
-        $this->map = new Map(new Tile(0, 0), 2);
+        $this->map = new Map(new Tile(0, 0), 3);
     }
 
     public function getName()
