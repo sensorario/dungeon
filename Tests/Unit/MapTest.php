@@ -12,8 +12,8 @@ class MapTest extends PHPUnit_Framework_TestCase
     {
         $center = new Tile(2, 3);
         $map = new Map($center, 1);
-        $this->assertEquals([0 => [[2, 3], 0]], $map->getTiles());
-        $this->assertEquals([[[2, 3], 0]], $map->getTiles());
+        $this->assertEquals([0 => [[2, 3], 0]], $map->getAllTiles());
+        $this->assertEquals([[[2, 3], 0]], $map->getAllTiles());
     }
 
     public function testRounds()
@@ -30,7 +30,7 @@ class MapTest extends PHPUnit_Framework_TestCase
                 [[-1, 1], 1],
                 [[0, 1], 1]
             ],
-            $map->getTiles()
+            $map->getAllTiles()
         );
     }
 
@@ -59,7 +59,7 @@ class MapTest extends PHPUnit_Framework_TestCase
                 [[0, 2], 2],
                 [[1, 2], 2],
             ],
-            $map->getTiles()
+            $map->getAllTiles()
         );
     }
 
@@ -78,7 +78,7 @@ class MapTest extends PHPUnit_Framework_TestCase
                 [[-1, 1], 1],
                 [[0, 1], 1]
             ],
-            $map->getTiles()
+            $map->getAllTiles()
         );
     }
 
@@ -89,7 +89,7 @@ class MapTest extends PHPUnit_Framework_TestCase
     {
         $center = new Tile(0, 0);
         $map = new Map($center, 2);
-        $this->assertTrue($exists === $map->tileExists(new Tile($x, $y)));
+        $this->assertTrue($exists === $map->hasTile(new Tile($x, $y)));
     }
 
     public function tiles()
@@ -116,7 +116,7 @@ class MapTest extends PHPUnit_Framework_TestCase
                 [[0, 1], 1],
                 [[2, 1], 1], // terzo girone
             ],
-            $map->getTiles()
+            $map->getAllTiles()
         );
     }
 
@@ -143,17 +143,17 @@ class MapTest extends PHPUnit_Framework_TestCase
     {
         $center = new Tile(0, 0);
         $map = new Map($center, 2);
-        $this->assertEquals(0, $map->getDistanceAtCoordinate(0, 0));
-        $this->assertEquals(1, $map->getDistanceAtCoordinate(1, 0));
-        $this->assertEquals(1, $map->getDistanceAtCoordinate(-1, 0));
+        $this->assertEquals(0, $map->getTileDistanceByCoordinate(0, 0));
+        $this->assertEquals(1, $map->getTileDistanceByCoordinate(1, 0));
+        $this->assertEquals(1, $map->getTileDistanceByCoordinate(-1, 0));
     }
 
     public function testGetTileIndexFromCoordinate()
     {
         $center = new Tile(0, 0);
         $map = new Map($center, 2);
-        $this->assertEquals(0, $map->getTileIndexFromCoordinate(0, 0));
-        $this->assertEquals(1, $map->getTileIndexFromCoordinate(1, 0));
-        $this->assertEquals(4, $map->getTileIndexFromCoordinate(-1, 0));
+        $this->assertEquals(0, $map->getTileIndexByCoordinate(0, 0));
+        $this->assertEquals(1, $map->getTileIndexByCoordinate(1, 0));
+        $this->assertEquals(4, $map->getTileIndexByCoordinate(-1, 0));
     }
 }

@@ -52,7 +52,7 @@ class WorldTest extends PHPUnit_Framework_TestCase
     public function testFindFirstFreeTile()
     {
         $world = new World('yagolands');
-        $freeIndex = $world->findFreeIndex();
+        $freeIndex = $world->getEdgeTile();
         $this->assertEquals(7, $freeIndex);
         $this->assertEquals([[1, 1], 2], $world->getTileAtIndex($freeIndex));
     }
@@ -61,74 +61,78 @@ class WorldTest extends PHPUnit_Framework_TestCase
     {
         $world = new World('yagolands');
 
-        $this->assertFalse($world->getMap()->tileExists(new Tile(0, 3)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(1, 3)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(2, 3)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(2, 2)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(3, 2)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(2, 1)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(3, 1)));
-        $this->assertFalse($world->getMap()->tileExists(new Tile(3, 0)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(0, 3)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(1, 3)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 3)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 2)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 2)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 1)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 1)));
+        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 0)));
 
-        $world->buildAroundTileAtIndex($world->findFreeIndex());
+        $world->growAroundEdgeTile($world->getEdgeTile());
 
-        $this->assertTrue($world->getMap()->tileExists(new Tile(0, 3)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(1, 3)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(2, 3)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(2, 2)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(3, 2)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(2, 1)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(3, 1)));
-        $this->assertTrue($world->getMap()->tileExists(new Tile(3, 0)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(0, 3)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(1, 3)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 3)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 2)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 2)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 1)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 1)));
+        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 0)));
 
-        $this->assertEquals(0, $world->getMap()->getDistanceAtCoordinate(1, 1));
+        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(1, 1));
 
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 1));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 0));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(1, 0));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(0, 1));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(1, 2));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 2));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 1));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 0));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(1, 0));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(0, 1));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(1, 2));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 2));
 
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 1));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 0));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(2, -1));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(1, -1));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(0, -1));
-        $this->assertEquals(0, $world->getMap()->getDistanceAtCoordinate(0, 0));
-        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(-1, 1));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(0, 2));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(0, 3));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(1, 3));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(2, 3));
-        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 2));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 1));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 0));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(2, -1));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(1, -1));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(0, -1));
+        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(0, 0));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(-1, 1));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(0, 2));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(0, 3));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(1, 3));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(2, 3));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 2));
     }
 
     public function testFindFreeIndexWillBeRandom()
     {
         $world = new World('yagolands');
         $this->assertTrue(false === $world->freeIndexIsRandom());
-        $world->buildAroundTileAtIndex($world->findFreeIndex());
+        $world->growAroundEdgeTile($world->getEdgeTile());
         $this->assertTrue(true === $world->freeIndexIsRandom());
     }
 
     public function testWorldGrowRandomly()
     {
         $yagolands = new World('yagolands');
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
-        $yagolands->buildAroundTileAtIndex($yagolands->findFreeIndex());
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
 
         $threegates = new World('threegates');
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
-        $threegates->buildAroundTileAtIndex($threegates->findFreeIndex());
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+
+        $this->assertTrue($yagolands->getMap() == $threegates->getMap());
+
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
 
         $this->assertFalse($yagolands->getMap() == $threegates->getMap());
     }

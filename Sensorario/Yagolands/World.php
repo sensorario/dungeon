@@ -23,7 +23,7 @@ class World
 
     public function countTiles()
     {
-        return count($this->map->getTiles());
+        return count($this->map->getAllTiles());
     }
 
     /**
@@ -32,7 +32,7 @@ class World
      */
     public function getTileAtIndex($index)
     {
-        return $this->map->getTiles()[$index];
+        return $this->map->getAllTiles()[$index];
     }
 
     public function getMap()
@@ -50,9 +50,9 @@ class World
         return count($this->players);
     }
 
-    public function findFreeIndex()
+    public function getEdgeTile()
     {
-        $tiles = $this->getMap()->getTiles();
+        $tiles = $this->getMap()->getAllTiles();
 
         if ($this->freeIndexIsRandom) {
             while (true) {
@@ -70,18 +70,19 @@ class World
         }
     }
 
-    public function buildAroundTileAtIndex($index)
+    public function growAroundEdgeTile($index)
     {
         $this->freeIndexIsRandom = true;
 
         $roundToBuild = 2;
-        $center = $this->getMap()->getTiles()[$index];
+        $map = $this->getMap();
+        $center = $map->getAllTiles()[$index];
         $centerX = $center[0][0];
         $centerY = $center[0][1];
         $position = new Tile($centerX, $centerY);
 
-        $tileIndex = $this->getMap()->getTileIndexFromCoordinate($centerX, $centerY);
-        $this->getMap()->setTileDistance($tileIndex, 0);
+        $tileIndex = $map->getTileIndexByCoordinate($centerX, $centerY);
+        $map->setTileDistance($tileIndex, 0);
 
         for ($i = 1; $i <= $roundToBuild; $i++) {
             $position->move(Directions::RIGHT_UP);
@@ -89,18 +90,18 @@ class World
             foreach (Directions::getDirections() as $direction) {
                 for ($j = 0; $j < $i; $j++) {
                     $moved = $position->move($direction);
-                    $coordinates = $moved->getCoordinates();
-                    $x = $coordinates[0];
-                    $y = $coordinates[1];
-                    $tileNotExists = !$this->getMap()->tileExists(new Tile($x, $y));
+                    $x = $moved->getCoordinates()[0];
+                    $y = $moved->getCoordinates()[1];
+                    $tile = new Tile($x, $y);
+                    $tileNotExists = !$map->hasTile($tile);
                     if ($tileNotExists) {
-                        $this->getMap()->addTile(new Tile($x, $y), $i);
+                        $map->addTile(new Tile($x, $y), $i);
                     } else {
-                        $distanceAtCoordinate = $this->getMap()->getDistanceAtCoordinate($x, $y);
                         if ($i == 1) {
-                            if ($distanceAtCoordinate == 2) {
-                                $newTileIndex = $this->getMap()->getTileIndexFromCoordinate($x, $y);
-                                $this->getMap()->setTileDistance($newTileIndex, 1);
+                            $isEdgeTile = $map->getTileDistanceByCoordinate($x, $y) == 2;
+                            if ($isEdgeTile) {
+                                $newTileIndex = $map->getTileIndexByCoordinate($x, $y);
+                                $map->setTileDistance($newTileIndex, 1);
                             }
                         }
                     }
