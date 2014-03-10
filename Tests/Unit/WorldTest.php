@@ -2,9 +2,10 @@
 
 namespace Tests\Unit;
 
+use PHPUnit_Framework_TestCase;
 use Sensorario\Yagolands\World;
 
-class WorldTest extends \PHPUnit_Framework_TestCase
+class WorldTest extends PHPUnit_Framework_TestCase
 {
     public function testWorld()
     {

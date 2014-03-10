@@ -10,14 +10,16 @@ class MapTest extends PHPUnit_Framework_TestCase
 {
     public function testTileIsCoordinateWithPosition()
     {
-        $tile = new Map(new Tile(2, 3), 1);
+        $center = new Tile(2, 3);
+        $tile = new Map($center, 1);
         $this->assertEquals([0 => [[2, 3], 0]], $tile->getTiles());
         $this->assertEquals([[[2, 3], 0]], $tile->getTiles());
     }
 
     public function testRounds()
     {
-        $tile = new Map(new Tile(0, 0), 2);
+        $center = new Tile(0, 0);
+        $tile = new Map($center, 2);
         $this->assertEquals(
             [
                 [[0, 0], 0], // centro

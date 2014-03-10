@@ -6,22 +6,23 @@ class Map
 {
     private $tiles;
 
-    public function __construct(Tile $coordinate, $rounds)
+    public function __construct(Tile $center, $rounds)
     {
         $distance = 0;
 
         $this->tiles[] = [
-            $coordinate->getCoordinates(),
+            $center->getCoordinates(),
             $distance
         ];
 
+        $position = $center;
         for ($i = 1; $i < $rounds; $i++) {
-            $coordinate->move(Directions::RIGHT_UP);
-            $distance += 1;
+            $position->move(Directions::RIGHT_UP);
+            $distance++;
 
             foreach (Directions::getDirections() as $direction) {
                 for ($j = 0; $j < $i; $j++) {
-                    $moved = $coordinate->move($direction);
+                    $moved = $position->move($direction);
                     $this->tiles[] = [
                         $moved->getCoordinates(),
                         $distance
