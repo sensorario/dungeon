@@ -129,4 +129,13 @@ class MapTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, $map->getDistanceAtIndex(0));
         $this->assertEquals(1, $map->getDistanceAtIndex(2));
     }
+
+    public function testGetTileAtIndex()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $this->assertEquals([[0, 0], 0], $map->getTileAtIndex(0));
+        $this->assertEquals([[1, 0], 1], $map->getTileAtIndex(1));
+        $this->assertEquals([[-1, 0], 1], $map->getTileAtIndex(4));
+    }
 }

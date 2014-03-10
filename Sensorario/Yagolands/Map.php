@@ -62,4 +62,9 @@ class Map
     {
         return $this->getTiles()[$index][1];
     }
+
+    public function getTileAtIndex($index)
+    {
+        return $this->getTiles()[$index];
+    }
 }
