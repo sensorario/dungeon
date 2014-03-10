@@ -10,16 +10,19 @@ class WorldTest extends \PHPUnit_Framework_TestCase
     {
         $tile = $this->getMockBuilder('Sensorario\Yagolands\Tile')
             ->disableOriginalConstructor()
-            ->setMethods(['getCoordinates'])
+            ->setMethods(['getCoordinates', 'isBuildable'])
             ->getMock();
         $tile->expects($this->once())
             ->method('getCoordinates')
             ->will($this->returnValue([0, 0]));
+        $tile->expects($this->once())
+            ->method('isBuildable')
+            ->will($this->returnValue(false));
 
         $world = new World('yagolands');
         $this->assertEquals('yagolands', $world->getName());
         $this->assertEquals(7, $world->countTiles());
-        $this->assertEquals($tile->getCoordinates(), $world->getTileAtIndex(0));
+        $this->assertEquals([$tile->getCoordinates(), $tile->isBuildable()], $world->getTileAtIndex(0));
     }
 
     public function testMap()
