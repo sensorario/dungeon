@@ -80,5 +80,27 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($world->getMap()->tileExists(new Tile(2, 1)));
         $this->assertTrue($world->getMap()->tileExists(new Tile(3, 1)));
         $this->assertTrue($world->getMap()->tileExists(new Tile(3, 0)));
+
+        $this->assertEquals(0, $world->getMap()->getDistanceAtCoordinate(1, 1));
+
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 1));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 0));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(1, 0));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(0, 1));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(1, 2));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(2, 2));
+
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 1));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 0));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(2, -1));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(1, -1));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(0, -1));
+        $this->assertEquals(0, $world->getMap()->getDistanceAtCoordinate(0, 0));
+        $this->assertEquals(1, $world->getMap()->getDistanceAtCoordinate(-1, 1));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(0, 2));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(0, 3));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(1, 3));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(2, 3));
+        $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 2));
     }
 }

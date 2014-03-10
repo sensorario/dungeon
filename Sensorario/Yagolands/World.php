@@ -62,7 +62,13 @@ class World
     {
         $roundToBuild = 2;
         $center = $this->getMap()->getTiles()[$index];
-        $position = new Tile($center[0][0], $center[0][1]);
+        $centerX = $center[0][0];
+        $centerY = $center[0][1];
+        $position = new Tile($centerX, $centerY);
+
+        $tileIndex = $this->getMap()->getTileIndexFromCoordinate($centerX, $centerY);
+        $this->getMap()->setTileDistance($tileIndex, 0);
+
         for ($i = 1; $i <= $roundToBuild; $i++) {
             $position->move(Directions::RIGHT_UP);
 
@@ -75,6 +81,14 @@ class World
                     $tileNotExists = !$this->getMap()->tileExists(new Tile($x, $y));
                     if ($tileNotExists) {
                         $this->getMap()->addTile(new Tile($x, $y), $i);
+                    } else {
+                        $distanceAtCoordinate = $this->getMap()->getDistanceAtCoordinate($x, $y);
+                        if ($i == 1) {
+                            if ($distanceAtCoordinate == 2) {
+                                $newTileIndex = $this->getMap()->getTileIndexFromCoordinate($x, $y);
+                                $this->getMap()->setTileDistance($newTileIndex, 1);
+                            }
+                        }
                     }
                 }
             }

@@ -37,9 +37,9 @@ class Map
         return $this->tiles;
     }
 
-    public function setTileDistance($tile, $distance)
+    public function setTileDistance($tileIndex, $distance)
     {
-        $this->tiles[$tile][1] = $distance;
+        $this->tiles[$tileIndex][1] = $distance;
     }
 
     public function tileExists(Tile $tileToFind)
