@@ -53,18 +53,19 @@ class World
     public function findFreeIndex()
     {
         $tiles = $this->getMap()->getTiles();
-        if (!$this->freeIndexIsRandom) {
-            foreach ($tiles as $index => $tile) {
-                if ($tile[1] == 2) {
-                    return $index;
-                }
-            }
-        } else {
+
+        if ($this->freeIndexIsRandom) {
             while (true) {
                 $rand = rand(0, count($tiles) - 1);
                 if ($tiles[$rand][1] == 2) {
                     return $rand;
                 }
+            }
+        }
+
+        foreach ($tiles as $index => $tile) {
+            if ($tile[1] == 2) {
+                return $index;
             }
         }
     }
