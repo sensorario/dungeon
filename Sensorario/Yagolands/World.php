@@ -8,6 +8,8 @@ class World
 
     private $map;
 
+    private $freeIndexIsRandom = false;
+
     public function __construct($name)
     {
         $this->name = $name;
@@ -60,6 +62,8 @@ class World
 
     public function buildAroundTileAtIndex($index)
     {
+        $this->freeIndexIsRandom = true;
+
         $roundToBuild = 2;
         $center = $this->getMap()->getTiles()[$index];
         $centerX = $center[0][0];
@@ -93,5 +97,10 @@ class World
                 }
             }
         }
+    }
+
+    public function freeIndexIsRandom()
+    {
+        return $this->freeIndexIsRandom;
     }
 }

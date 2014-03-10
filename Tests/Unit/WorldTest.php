@@ -103,4 +103,12 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(2, 3));
         $this->assertEquals(2, $world->getMap()->getDistanceAtCoordinate(3, 2));
     }
+
+    public function testFindFreeIndexWillBeRandom()
+    {
+        $world = new World('yagolands');
+        $this->assertTrue(false === $world->freeIndexIsRandom());
+        $world->buildAroundTileAtIndex($world->findFreeIndex());
+        $this->assertTrue(true === $world->freeIndexIsRandom());
+    }
 }
