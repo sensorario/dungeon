@@ -62,4 +62,23 @@ class MapTest extends PHPUnit_Framework_TestCase
             $tile->getTiles()
         );
     }
+
+    public function testChangeDistanceOfTile()
+    {
+        $center = new Tile(0, 0);
+        $tile = new Map($center, 2);
+        $tile->setTileDistance(3, 2);
+        $this->assertEquals(
+            [
+                [[0, 0], 0], // centro
+                [[1, 0], 1], // primo girone
+                [[0, -1], 1],
+                [[-1, -1], 2],
+                [[-1, 0], 1],
+                [[-1, 1], 1],
+                [[0, 1], 1]
+            ],
+            $tile->getTiles()
+        );
+    }
 }

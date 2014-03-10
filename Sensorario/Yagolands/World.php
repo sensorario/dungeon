@@ -53,8 +53,4 @@ class World
             }
         }
     }
-
-    public function buildAroundAnIndex($index)
-    {
-    }
 }

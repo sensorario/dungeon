@@ -36,4 +36,9 @@ class Map
     {
         return $this->tiles;
     }
+
+    public function setTileDistance($tile, $distance)
+    {
+        $this->tiles[$tile][1] = $distance;
+    }
 }
