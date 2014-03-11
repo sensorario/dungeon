@@ -6,20 +6,20 @@ class Map
 {
     private $tiles;
 
-    public function __construct(Tile $center, $rounds)
-    {
-        $this->tiles[] = [
-            $center->getCoordinates(),
-            0
-        ];
+    const COORDINATES = 0;
 
-        $position = $center;
-        for ($i = 1; $i < $rounds; $i++) {
+    const DISTANCE = 1;
+
+    public function __construct(Tile $position, $rounds)
+    {
+        $this->addTile($position);
+
+        for ($round = 1; $round < $rounds; $round++) {
             $position->move(Directions::RIGHT_UP);
 
             foreach (Directions::getDirections() as $direction) {
-                for ($j = 0; $j < $i; $j++) {
-                    $this->tiles[] = [$position->move($direction)->getCoordinates(), $i];
+                for ($step = 0; $step < $round; $step++) {
+                    $this->addTile($position->move($direction), $round);
                 }
             }
         }
@@ -32,13 +32,13 @@ class Map
 
     public function setTileDistance($index, $distance)
     {
-        $this->tiles[$index][1] = $distance;
+        $this->tiles[$index][self::DISTANCE] = $distance;
     }
 
     public function hasTile(Tile $tile)
     {
         foreach ($this->tiles as $item) {
-            if ($item[0] == $tile->getCoordinates()) {
+            if ($item[self::COORDINATES] == $tile->getCoordinates()) {
                 return true;
             }
         }
@@ -53,7 +53,7 @@ class Map
 
     public function getDistanceAtIndex($index)
     {
-        return $this->getAllTiles()[$index][1];
+        return $this->getAllTiles()[$index][self::DISTANCE];
     }
 
     public function getTileAtIndex($index)
@@ -64,8 +64,8 @@ class Map
     public function getTileDistanceByCoordinate($x, $y)
     {
         foreach ($this->tiles as $tile) {
-            if ([$x, $y] == $tile[0]) {
-                return $tile[1];
+            if ([$x, $y] == $tile[self::COORDINATES]) {
+                return $tile[self::DISTANCE];
             }
         }
     }
@@ -73,7 +73,7 @@ class Map
     public function getTileIndexByCoordinate($x, $y)
     {
         foreach ($this->tiles as $index => $tile) {
-            if ([$x, $y] == $tile[0]) {
+            if ([$x, $y] == $tile[self::COORDINATES]) {
                 return $index;
             }
         }
