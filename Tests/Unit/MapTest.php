@@ -176,4 +176,26 @@ class MapTest extends PHPUnit_Framework_TestCase
             $map->getAllTiles()
         );
     }
+
+    public function testTileIsOnTheEdge()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $map->setTileDistance(3, 2);
+        $map->setTileDistance(5, 2);
+        $this->assertEquals(
+            [
+                [[0, 0], 0], // centro
+                [[1, 0], 1], // primo girone
+                [[0, -1], 1],
+                [[-1, -1], 2],
+                [[-1, 0], 1],
+                [[-1, 1], 2],
+                [[0, 1], 1]
+            ],
+            $map->getAllTiles()
+        );
+        $this->assertTrue($map->isTileOnTheEdge(new Tile(-1, -1)));
+        $this->assertTrue(false === $map->isTileOnTheEdge(new Tile(0, -1)));
+    }
 }

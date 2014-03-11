@@ -10,6 +10,8 @@ class Map
 
     const DISTANCE = 1;
 
+    const IS_ON_THE_EDGE = 2;
+
     public function __construct(Tile $position, $rounds)
     {
         $this->addTile($position);
@@ -77,5 +79,18 @@ class Map
                 return $index;
             }
         }
+    }
+
+    public function isTileOnTheEdge(Tile $tile)
+    {
+        foreach ($this->tiles as $item) {
+            if ($item[self::COORDINATES] == $tile->getCoordinates()) {
+                if ($item[self::DISTANCE] == self::IS_ON_THE_EDGE) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
