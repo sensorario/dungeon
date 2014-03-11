@@ -46,7 +46,7 @@ class Map
         return false;
     }
 
-    public function addTile(Tile $tile, $distance)
+    public function addTile(Tile $tile, $distance = 0)
     {
         $this->tiles[] = [$tile->getCoordinates(), $distance];
     }

@@ -156,4 +156,24 @@ class MapTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $map->getTileIndexByCoordinate(1, 0));
         $this->assertEquals(4, $map->getTileIndexByCoordinate(-1, 0));
     }
+
+    public function testAddTileAsZeroDistanceByDefault()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $map->addTile(new Tile(2, 1));
+        $this->assertEquals(
+            [
+                [[0, 0], 0], // centro
+                [[1, 0], 1], // primo girone
+                [[0, -1], 1],
+                [[-1, -1], 1],
+                [[-1, 0], 1],
+                [[-1, 1], 1],
+                [[0, 1], 1],
+                [[2, 1], 0], // terzo girone
+            ],
+            $map->getAllTiles()
+        );
+    }
 }
