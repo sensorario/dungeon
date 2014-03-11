@@ -93,7 +93,7 @@ class World
         $centerY = $center[self::COORDINATES][self::Y];
         $position = new Tile($centerX, $centerY);
 
-        $tileIndex = $map->getTileIndexByCoordinate($centerX, $centerY);
+        $tileIndex = $map->getTileIndexByCoordinate($position);
         $map->setTileDistance($tileIndex, self::COORDINATES);
 
         for ($round = self::DISTANCE; $round <= $roundToBuild; $round++) {
@@ -110,8 +110,8 @@ class World
                         $map->addTile(new Tile($x, $y), $round);
                     } else {
                         if ($round == self::FIRST_ROUND) {
-                            if ($map->getTileDistanceByCoordinate($x, $y) == self::IS_ON_THE_EDGE) {
-                                $newTileIndex = $map->getTileIndexByCoordinate($x, $y);
+                            if ($map->getTileDistanceByCoordinate($moved) == self::IS_ON_THE_EDGE) {
+                                $newTileIndex = $map->getTileIndexByCoordinate($moved);
                                 $map->setTileDistance($newTileIndex, self::DISTANCE);
                             }
                         }

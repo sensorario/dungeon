@@ -143,18 +143,18 @@ class MapTest extends PHPUnit_Framework_TestCase
     {
         $center = new Tile(0, 0);
         $map = new Map($center, 2);
-        $this->assertEquals(0, $map->getTileDistanceByCoordinate(0, 0));
-        $this->assertEquals(1, $map->getTileDistanceByCoordinate(1, 0));
-        $this->assertEquals(1, $map->getTileDistanceByCoordinate(-1, 0));
+        $this->assertEquals(0, $map->getTileDistanceByCoordinate(new Tile(0, 0)));
+        $this->assertEquals(1, $map->getTileDistanceByCoordinate(new Tile(1, 0)));
+        $this->assertEquals(1, $map->getTileDistanceByCoordinate(new Tile(-1, 0)));
     }
 
     public function testGetTileIndexFromCoordinate()
     {
         $center = new Tile(0, 0);
         $map = new Map($center, 2);
-        $this->assertEquals(0, $map->getTileIndexByCoordinate(0, 0));
-        $this->assertEquals(1, $map->getTileIndexByCoordinate(1, 0));
-        $this->assertEquals(4, $map->getTileIndexByCoordinate(-1, 0));
+        $this->assertEquals(0, $map->getTileIndexByCoordinate(new Tile(0, 0)));
+        $this->assertEquals(1, $map->getTileIndexByCoordinate(new Tile(1, 0)));
+        $this->assertEquals(4, $map->getTileIndexByCoordinate(new Tile(-1, 0)));
     }
 
     public function testAddTileAsZeroDistanceByDefault()

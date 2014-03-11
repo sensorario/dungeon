@@ -63,19 +63,19 @@ class Map
         return $this->getAllTiles()[$index];
     }
 
-    public function getTileDistanceByCoordinate($x, $y)
+    public function getTileDistanceByCoordinate(Tile $tile)
     {
-        foreach ($this->tiles as $tile) {
-            if ([$x, $y] == $tile[self::COORDINATES]) {
-                return $tile[self::DISTANCE];
+        foreach ($this->tiles as $item) {
+            if ($tile->getCoordinates() == $item[self::COORDINATES]) {
+                return $item[self::DISTANCE];
             }
         }
     }
 
-    public function getTileIndexByCoordinate($x, $y)
+    public function getTileIndexByCoordinate(Tile $tile)
     {
-        foreach ($this->tiles as $index => $tile) {
-            if ([$x, $y] == $tile[self::COORDINATES]) {
+        foreach ($this->tiles as $index => $item) {
+            if ($tile->getCoordinates() == $item[self::COORDINATES]) {
                 return $index;
             }
         }

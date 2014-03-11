@@ -81,27 +81,27 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($world->getMap()->hasTile(new Tile(3, 1)));
         $this->assertTrue($world->getMap()->hasTile(new Tile(3, 0)));
 
-        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(1, 1));
+        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, 1)));
 
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 1));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 0));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(1, 0));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(0, 1));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(1, 2));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(2, 2));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(2, 1)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(2, 0)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, 0)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(0, 1)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, 2)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(2, 2)));
 
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 1));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 0));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(2, -1));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(1, -1));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(0, -1));
-        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(0, 0));
-        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(-1, 1));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(0, 2));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(0, 3));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(1, 3));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(2, 3));
-        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(3, 2));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(3, 1)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(3, 0)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(2, -1)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, -1)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(0, -1)));
+        $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(new Tile(0, 0)));
+        $this->assertEquals(1, $world->getMap()->getTileDistanceByCoordinate(new Tile(-1, 1)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(0, 2)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(0, 3)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, 3)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(2, 3)));
+        $this->assertEquals(2, $world->getMap()->getTileDistanceByCoordinate(new Tile(3, 2)));
     }
 
     public function testFindFreeIndexWillBeRandom()
