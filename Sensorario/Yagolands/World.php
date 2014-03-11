@@ -8,7 +8,7 @@ class World
 
     private $map;
 
-    private $freeIndexIsRandom = false;
+    private $freeIndexSearchIsRandom = false;
 
     const DISTANCE = 1;
 
@@ -25,7 +25,7 @@ class World
     public function __construct($name)
     {
         $this->name = $name;
-        $this->map = new Map(new Tile(self::COORDINATES, self::COORDINATES), 3);
+        $this->map = new Map(new Tile(0, 0), 3);
     }
 
     public function getName()
@@ -66,9 +66,9 @@ class World
     {
         $tiles = $this->getMap()->getAllTiles();
 
-        if ($this->freeIndexIsRandom) {
+        if ($this->freeIndexSearchIsRandom) {
             while (true) {
-                $rand = rand(self::COORDINATES, count($tiles) - self::DISTANCE);
+                $rand = rand(self::COORDINATES, count($tiles) - 1);
                 if ($tiles[$rand][self::DISTANCE] == self::IS_ON_THE_EDGE) {
                     return $rand;
                 }
@@ -84,45 +84,41 @@ class World
 
     public function growAroundEdgeTile($index)
     {
-        $this->freeIndexIsRandom = true;
+        $this->freeIndexSearchIsRandom = true;
 
-        $roundToBuild = self::IS_ON_THE_EDGE;
+        $roundToBuild = 2;
         $map = $this->getMap();
-        $center = $map->getAllTiles()[$index];
-        $centerX = $center[self::COORDINATES][self::X];
-        $centerY = $center[self::COORDINATES][self::Y];
-        $position = new Tile($centerX, $centerY);
 
-        $tileIndex = $map->getTileIndexByCoordinate($position);
-        $map->setTileDistance($tileIndex, self::COORDINATES);
+        $position = new Tile(
+            $map->getAllTiles()[$index][self::COORDINATES][self::X],
+            $map->getAllTiles()[$index][self::COORDINATES][self::Y]
+        );
+
+        $map->setTileDistance($index, self::COORDINATES);
 
         for ($round = self::DISTANCE; $round <= $roundToBuild; $round++) {
             $position->move(Directions::RIGHT_UP);
 
             foreach (Directions::getDirections() as $direction) {
-                for ($j = self::COORDINATES; $j < $round; $j++) {
-                    $moved = $position->move($direction);
-                    $x = $moved->getCoordinates()[self::X];
-                    $y = $moved->getCoordinates()[self::Y];
-                    $tile = new Tile($x, $y);
-                    $tileNotExists = !$map->hasTile($tile);
-                    if ($tileNotExists) {
-                        $map->addTile(new Tile($x, $y), $round);
-                    } else {
+                for ($step = 0; $step < $round; $step++) {
+                    $tile = $position->move($direction);
+                    if ($map->hasTile($tile)) {
                         if ($round == self::FIRST_ROUND) {
-                            if ($map->getTileDistanceByCoordinate($moved) == self::IS_ON_THE_EDGE) {
-                                $newTileIndex = $map->getTileIndexByCoordinate($moved);
+                            if ($map->isTileOnTheEdge($tile)) {
+                                $newTileIndex = $map->getTileIndex($tile);
                                 $map->setTileDistance($newTileIndex, self::DISTANCE);
                             }
                         }
+                    } else {
+                        $map->addTile($tile, $round);
                     }
                 }
             }
         }
     }
 
-    public function freeIndexIsRandom()
+    public function freeIndexSearchIsRandom()
     {
-        return $this->freeIndexIsRandom;
+        return $this->freeIndexSearchIsRandom;
     }
 }

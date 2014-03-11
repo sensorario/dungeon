@@ -107,9 +107,9 @@ class WorldTest extends PHPUnit_Framework_TestCase
     public function testFindFreeIndexWillBeRandom()
     {
         $world = new World('yagolands');
-        $this->assertTrue(false === $world->freeIndexIsRandom());
+        $this->assertTrue(false === $world->freeIndexSearchIsRandom());
         $world->growAroundEdgeTile($world->getEdgeTile());
-        $this->assertTrue(true === $world->freeIndexIsRandom());
+        $this->assertTrue(true === $world->freeIndexSearchIsRandom());
     }
 
     public function testWorldGrowRandomly()

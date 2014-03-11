@@ -72,7 +72,7 @@ class Map
         }
     }
 
-    public function getTileIndexByCoordinate(Tile $tile)
+    public function getTileIndex(Tile $tile)
     {
         foreach ($this->tiles as $index => $item) {
             if ($tile->getCoordinates() == $item[self::COORDINATES]) {
