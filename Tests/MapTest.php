@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Sensorario\Yagolands\Tile;
-use Sensorario\Yagolands\Map;
+use Sensorario\Dungeon\Tile;
+use Sensorario\Dungeon\Map;
 
 class MapTest extends PHPUnit_Framework_TestCase
 {

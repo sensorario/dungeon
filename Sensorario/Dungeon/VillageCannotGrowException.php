@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensorario\Yagolands\Exceptions;
+namespace Sensorario\Dungeon;
 
 use Exception;
 

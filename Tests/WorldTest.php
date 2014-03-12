@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Sensorario\Yagolands\Tile;
-use Sensorario\Yagolands\World;
+use Sensorario\Dungeon\Tile;
+use Sensorario\Dungeon\World;
 
 class WorldTest extends PHPUnit_Framework_TestCase
 {
     public function testWorld()
     {
-        $tile = $this->getMockBuilder('Sensorario\Yagolands\Tile')
+        $tile = $this->getMockBuilder('Sensorario\Dungeon\Tile')
             ->disableOriginalConstructor()
             ->setMethods(['getCoordinates', 'isBuildable'])
             ->getMock();
@@ -30,7 +30,7 @@ class WorldTest extends PHPUnit_Framework_TestCase
     public function testMap()
     {
         $world = new World('yagolands');
-        $this->assertEquals('Sensorario\Yagolands\Map', get_class($world->getMap()));
+        $this->assertEquals('Sensorario\Dungeon\Map', get_class($world->getMap()));
     }
 
     public function testFindFirstFreeTile()

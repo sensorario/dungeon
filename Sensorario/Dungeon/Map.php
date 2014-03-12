@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensorario\Yagolands;
+namespace Sensorario\Dungeon;
 
 class Map extends Dungeon
 {

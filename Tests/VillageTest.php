@@ -1,16 +1,16 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Sensorario\Yagolands\Village;
+use Sensorario\Dungeon\Village;
 
 class VillageTest extends PHPUnit_Framework_TestCase
 {
     public function testIsDungeonInstance()
     {
         $village = new Village();
-        $this->assertTrue(is_subclass_of($village, 'Sensorario\Yagolands\Dungeon'));
+        $this->assertTrue(is_subclass_of($village, 'Sensorario\Dungeon\Dungeon'));
     }
 
     public function testVillageCheckIfCoreIsBuiltOrNot()
@@ -20,11 +20,11 @@ class VillageTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Sensorario\Yagolands\Exceptions\VillageCannotGrowException
+     * @expectedException Sensorario\Dungeon\VillageCannotGrowException
      */
     public function testVillageCannotGrow()
     {
-        $tile = $this->getMockBuilder('Sensorario\Yagolands\Tile')
+        $tile = $this->getMockBuilder('Sensorario\Dungeon\Tile')
             ->disableOriginalConstructor()
             ->getMock();
 

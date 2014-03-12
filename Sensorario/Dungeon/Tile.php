@@ -1,14 +1,12 @@
 <?php
 
-namespace Sensorario\Yagolands;
+namespace Sensorario\Dungeon;
 
 class Tile
 {
     private $x;
 
     private $y;
-
-    private $owner;
 
     public function __construct($x, $y)
     {
@@ -77,15 +75,5 @@ class Tile
         $this->x -= $this->y % 2 == 0;
         --$this->y;
         return $this;
-    }
-
-    public function hasOwner()
-    {
-        return $this->owner != null;
-    }
-
-    public function setOwner(Player $player)
-    {
-        $this->owner = $player;
     }
 }

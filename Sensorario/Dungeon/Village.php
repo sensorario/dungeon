@@ -1,8 +1,8 @@
 <?php
 
-namespace Sensorario\Yagolands;
+namespace Sensorario\Dungeon;
 
-use Sensorario\Yagolands\Exceptions\VillageCannotGrowException;
+use Sensorario\Dungeon\VillageCannotGrowException;
 
 class Village extends Dungeon
 {

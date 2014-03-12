@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Sensorario\Yagolands\Directions;
-use Sensorario\Yagolands\Tile;
+use Sensorario\Dungeon\Directions;
+use Sensorario\Dungeon\Tile;
 
 /**
  * Class TileTest
@@ -96,22 +96,5 @@ class TileTest extends PHPUnit_Framework_TestCase
             [0, 0, -1, -1],
             [0, 1, 0, 0],
         ];
-    }
-
-    public function testTileHasNotOwner()
-    {
-        $tile = new Tile(0, 0);
-        $this->assertFalse($tile->hasOwner());
-    }
-
-    public function testTileCanBeOwned()
-    {
-        $owner = $this->getMockBuilder('Sensorario\Yagolands\Player')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $tile = new Tile(3, 4);
-        $tile->setOwner($owner);
-        $this->assertTrue($tile->hasOwner());
     }
 }
