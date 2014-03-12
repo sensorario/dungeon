@@ -10,6 +10,8 @@ class World
 
     private $freeIndexSearchIsRandom = false;
 
+    private $players;
+
     const DISTANCE = 1;
 
     const IS_ON_THE_EDGE = 2;
@@ -120,5 +122,16 @@ class World
     public function freeIndexSearchIsRandom()
     {
         return $this->freeIndexSearchIsRandom;
+    }
+
+    public function hasPlayer(Player $player)
+    {
+        foreach ($this->players as $item) {
+            if ($player == $item) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
