@@ -26,5 +26,6 @@ class BarrackTest extends PHPUnit_Framework_TestCase
         $barrack = new Barrack();
         $this->assertEquals(35, $barrack->resourceForLevel(Resources::GRANO, 1));
         $this->assertEquals(46, $barrack->resourceForLevel(Resources::GRANO, 2));
+        $this->assertEquals(46, $barrack->resourceForLevel(Resources::GRANO, 2));
     }
 }

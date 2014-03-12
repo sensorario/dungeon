@@ -15,10 +15,6 @@ class Village extends Dungeon
         $this->coreIsBuilt = true;
     }
 
-    public function setOwner(Player $player)
-    {
-    }
-
     public function coreIsBuilt()
     {
         return $this->coreIsBuilt;

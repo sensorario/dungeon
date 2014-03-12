@@ -13,16 +13,6 @@ class VillageTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(is_subclass_of($village, 'Sensorario\Yagolands\Dungeon'));
     }
 
-    public function testVillageHasOwner()
-    {
-        $user = $this->getMockBuilder('Sensorario\Yagolands\Player')
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $village = new Village();
-        $village->setOwner($user);
-    }
-
     public function testVillageCheckIfCoreIsBuiltOrNot()
     {
         $village = new Village();
