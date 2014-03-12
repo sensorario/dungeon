@@ -1,0 +1,13 @@
+{
+    "name": "sensorario/yagolands",
+    "description": "PHP library for Dungeons generation",
+    "authors": [
+        {
+            "name": "sensorario",
+            "email": "sensorario@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\Sensorario\Dungeon;
 
 use PHPUnit_Framework_TestCase;
 use Sensorario\Dungeon\Tile;
