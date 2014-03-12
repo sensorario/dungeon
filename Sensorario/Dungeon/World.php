@@ -72,7 +72,7 @@ class World
         }
     }
 
-    public function growAroundEdgeTile($index)
+    public function growAroundTile($index)
     {
         $this->freeIndexSearchIsRandom = true;
 

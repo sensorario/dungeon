@@ -54,7 +54,7 @@ class WorldTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($world->getMap()->hasTile(new Tile(3, 1)));
         $this->assertFalse($world->getMap()->hasTile(new Tile(3, 0)));
 
-        $world->growAroundEdgeTile($world->getEdgeTile());
+        $world->growAroundTile($world->getEdgeTile());
 
         $this->assertTrue($world->getMap()->hasTile(new Tile(0, 3)));
         $this->assertTrue($world->getMap()->hasTile(new Tile(1, 3)));
@@ -92,31 +92,31 @@ class WorldTest extends PHPUnit_Framework_TestCase
     {
         $world = new World('yagolands');
         $this->assertTrue(false === $world->freeIndexSearchIsRandom());
-        $world->growAroundEdgeTile($world->getEdgeTile());
+        $world->growAroundTile($world->getEdgeTile());
         $this->assertTrue(true === $world->freeIndexSearchIsRandom());
     }
 
     public function testWorldGrowRandomly()
     {
         $yagolands = new World('yagolands');
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
 
         $threegates = new World('threegates');
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
 
         $this->assertTrue($yagolands->getMap() == $threegates->getMap());
 
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
-        $yagolands->growAroundEdgeTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
+        $yagolands->growAroundTile($yagolands->getEdgeTile());
 
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
-        $threegates->growAroundEdgeTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
+        $threegates->growAroundTile($threegates->getEdgeTile());
 
         $this->assertFalse($yagolands->getMap() == $threegates->getMap());
     }

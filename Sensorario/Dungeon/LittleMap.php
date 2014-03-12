@@ -2,9 +2,7 @@
 
 namespace Sensorario\Dungeon;
 
-use Sensorario\Dungeon\VillageCannotGrowException;
-
-class Village extends Dungeon
+class LittleMap extends Dungeon
 {
     private $coreIsBuilt;
 
@@ -26,7 +24,12 @@ class Village extends Dungeon
         if ($coreIsNotYetBuilt) {
             $this->tiles[] = [$tile->getCoordinates(), $distance];
         } else {
-            throw new VillageCannotGrowException;
+            throw new LittleMapCannotGrowException();
         }
+    }
+
+    public function countTiles()
+    {
+        return count($this->getAllTiles());
     }
 }

@@ -36,7 +36,7 @@ class TileTest extends PHPUnit_Framework_TestCase
     public function testUpRight($fromX, $fromY, $toX, $toY)
     {
         $tile = new Tile($fromX, $fromY);
-        $this->assertEquals([$toX, $toY], $tile->move(DIRECTIONS::RIGHT_UP)->getCoordinates());
+        $this->assertEquals([$toX, $toY], $tile->move(Directions::RIGHT_UP)->getCoordinates());
     }
 
     public function centerAndUpRightDestinations()
