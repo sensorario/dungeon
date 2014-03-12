@@ -2,7 +2,7 @@
 <phpunit bootstrap="./bootstrap.php" colors="true">
     <testsuites>
         <testsuite name="Yagolands tests">
-            <directory>./src/Sensorario/Dungeon/tests</directory>
+            <directory>./tests/Sensorario/Dungeon</directory>
         </testsuite>
     </testsuites>
 </phpunit>
