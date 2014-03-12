@@ -6,10 +6,6 @@ use PHPUnit_Framework_TestCase;
 use Sensorario\Dungeon\Directions;
 use Sensorario\Dungeon\Tile;
 
-/**
- * Class TileTest
- * @package Tests\Unit
- */
 class TileTest extends PHPUnit_Framework_TestCase
 {
     public function testTile()
