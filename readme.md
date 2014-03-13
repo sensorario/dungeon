@@ -6,6 +6,7 @@ Questa è una libreria php per la creazione di dungeon a base esagonale.
 
     Sensorario\Dungeon\Map       - una mappa che si può estendere senza limiti
     Sensorario\Dungeon\LittleMap - una piccola mappa di 19 tiles
+    Sensorario\Dungeon\World     - gestisce la crescita di una mappa
 
 ## LittleMap
 
