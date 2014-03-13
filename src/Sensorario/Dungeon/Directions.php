@@ -4,12 +4,12 @@ namespace Sensorario\Dungeon;
 
 class Directions
 {
-    const RIGHT_UP = 'right_up';
-    const RIGHT = 'right';
-    const LEFT = 'left';
-    const LEFT_UP = 'up_left';
     const DOWN_RIGHT = 'down_right';
     const DOWN_LEFT = 'down_left';
+    const LEFT = 'left';
+    const LEFT_UP = 'up_left';
+    const RIGHT_UP = 'right_up';
+    const RIGHT = 'right';
 
     public static function getDirections()
     {

@@ -4,9 +4,9 @@ namespace Sensorario\Dungeon;
 
 class Tile
 {
-    private $x;
+    protected $x;
 
-    private $y;
+    protected $y;
 
     public function __construct($x = 0, $y = 0)
     {
