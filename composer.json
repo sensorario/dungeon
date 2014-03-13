@@ -1,5 +1,6 @@
 {
     "name": "sensorario/dungeon",
+    "minimum-stability": "dev",
     "description": "PHP library for Dungeons generation",
     "authors": [
         {
