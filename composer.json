@@ -8,7 +8,10 @@
             "email": "sensorario@gmail.com"
         }
     ],
-    "require": {
+    "autoload": {
+        "psr-0": {
+            "Sensorario\\Dungeon": "src/"
 
+        }
     }
 }
