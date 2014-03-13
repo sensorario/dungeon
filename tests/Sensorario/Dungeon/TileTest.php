@@ -93,4 +93,10 @@ class TileTest extends PHPUnit_Framework_TestCase
             [0, 1, 0, 0],
         ];
     }
+
+    public function testConstructorWithoutParameters()
+    {
+        $tile = new Tile();
+        $this->assertTrue([0, 0] === $tile->getCoordinates());
+    }
 }
