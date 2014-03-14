@@ -2,7 +2,9 @@
 
 namespace Sensorario\Dungeon;
 
-class Tile
+use JsonSerializable;
+
+class Tile implements JsonSerializable
 {
     protected $x;
 
@@ -75,5 +77,13 @@ class Tile
         $this->x -= $this->y % 2 == 0;
         --$this->y;
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'x' => $this->x,
+            'y' => $this->y,
+        ];
     }
 }

@@ -99,4 +99,10 @@ class TileTest extends PHPUnit_Framework_TestCase
         $tile = new Tile();
         $this->assertTrue([0, 0] === $tile->getCoordinates());
     }
+
+    public function testJson()
+    {
+        $tile = new Tile();
+        $this->assertEquals(['x' => 0, 'y' => 0], $tile->jsonSerialize());
+    }
 }
