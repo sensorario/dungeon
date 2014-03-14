@@ -2,14 +2,20 @@
 
 namespace Sensorario\Dungeon;
 
-class LittleMap extends Dungeon
+use JsonSerializable;
+
+class LittleMap extends Dungeon implements JsonSerializable
 {
     private $coreIsBuilt;
 
-    public function __construct()
+    public function __construct(Tile $position = null, $rounds = 3)
     {
+        if (!$position) {
+            $position = new Tile(0, 0);
+        }
+
         $this->coreIsBuilt = false;
-        parent::__construct(new Tile(0, 0), 3);
+        parent::__construct($position, $rounds);
         $this->coreIsBuilt = true;
     }
 
@@ -31,5 +37,12 @@ class LittleMap extends Dungeon
     public function countTiles()
     {
         return count($this->getAllTiles());
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'tiles' => $this->getAllTiles()
+        ];
     }
 }
