@@ -60,6 +60,10 @@ abstract class Dungeon
 
     public function getTileAtIndex($index)
     {
+        if (!isset($this->getAllTiles()[$index])) {
+            throw new \Sensorario\Dungeon\InvalidPositionException();
+        }
+
         return $this->getAllTiles()[$index];
     }
 

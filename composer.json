@@ -12,5 +12,8 @@
         "psr-0": {
             "Sensorario\\Dungeon": "src/"
         }
+    },
+    "require": {
+        "phpunit/phpunit": "4.4.4"
     }
 }
