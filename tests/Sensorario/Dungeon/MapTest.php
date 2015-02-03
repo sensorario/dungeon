@@ -22,8 +22,8 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map = new Map($center, 2);
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0],
+                [[1, 0], 1],
                 [[0, -1], 1],
                 [[-1, -1], 1],
                 [[-1, 0], 1],
@@ -39,14 +39,14 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map = new Map(new Tile(0, 0), 3);
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0],
+                [[1, 0], 1],
                 [[0, -1], 1],
                 [[-1, -1], 1],
                 [[-1, 0], 1],
                 [[-1, 1], 1],
                 [[0, 1], 1],
-                [[1, 1], 2], // secondo girone
+                [[1, 1], 2],
                 [[2, 0], 2],
                 [[1, -1], 2],
                 [[1, -2], 2],
@@ -70,8 +70,8 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map->setTileDistance(3, 2);
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0],
+                [[1, 0], 1],
                 [[0, -1], 1],
                 [[-1, -1], 2],
                 [[-1, 0], 1],
@@ -107,14 +107,14 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map->addTile(new Tile(2, 1), 1);
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0],
+                [[1, 0], 1],
                 [[0, -1], 1],
                 [[-1, -1], 1],
                 [[-1, 0], 1],
                 [[-1, 1], 1],
                 [[0, 1], 1],
-                [[2, 1], 1], // terzo girone
+                [[2, 1], 1],
             ],
             $map->getAllTiles()
         );
@@ -174,14 +174,14 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map->addTile(new Tile(2, 1));
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0], // center
+                [[1, 0], 1], // first circle
                 [[0, -1], 1],
                 [[-1, -1], 1],
                 [[-1, 0], 1],
                 [[-1, 1], 1],
                 [[0, 1], 1],
-                [[2, 1], 0], // terzo girone
+                [[2, 1], 0], // second circle
             ],
             $map->getAllTiles()
         );
@@ -195,8 +195,8 @@ class MapTest extends PHPUnit_Framework_TestCase
         $map->setTileDistance(5, 2);
         $this->assertEquals(
             [
-                [[0, 0], 0], // centro
-                [[1, 0], 1], // primo girone
+                [[0, 0], 0],
+                [[1, 0], 1],
                 [[0, -1], 1],
                 [[-1, -1], 2],
                 [[-1, 0], 1],
