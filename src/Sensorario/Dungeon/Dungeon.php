@@ -97,4 +97,9 @@ abstract class Dungeon
 
         return false;
     }
+
+    public function getPositionOfTile(Tile $tile)
+    {
+        return $this->getTileIndex($tile);
+    }
 }

@@ -208,4 +208,32 @@ class MapTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($map->isTileOnTheEdge(new Tile(-1, -1)));
         $this->assertTrue(false === $map->isTileOnTheEdge(new Tile(0, -1)));
     }
+
+    public function testPositionOfCoupleOfCoordinateInsideAMap()
+    {
+        $center = new Tile(0, 0);
+        $map = new Map($center, 2);
+        $this->assertEquals(
+            [
+                [[0, 0], 0],
+                [[1, 0], 1],
+                [[0, -1], 1],
+                [[-1, -1], 1],
+                [[-1, 0], 1],
+                [[-1, 1], 1],
+                [[0, 1], 1]
+            ],
+            $map->getAllTiles()
+        );
+
+        $this->assertSame(
+            4,
+            $map->getPositionOfTile(new Tile(-1, 0))
+        );
+
+        $this->assertSame(
+            0,
+            $map->getPositionOfTile(new Tile(0, 0))
+        );
+    }
 }
