@@ -53,28 +53,28 @@ class Tile implements JsonSerializable
 
     private function moveRightUp()
     {
-        $this->x += $this->y % 2;
+        $this->x = $this->x + 1 * ($this->y % 2 != 0);
         ++$this->y;
         return $this;
     }
 
     private function moveLeftUp()
     {
-        $this->x -= $this->y % 2 == 0;
+        $this->x = $this->x - 1 * ($this->y % 2 == 0);
         ++$this->y;
         return $this;
     }
 
     private function moveRightDown()
     {
-        $this->x += $this->y % 2 == 1;
+        $this->x = $this->x + 1 * ($this->y % 2 != 0);
         --$this->y;
         return $this;
     }
 
     private function moveLeftDown()
     {
-        $this->x -= $this->y % 2 == 0;
+        $this->x = $this->x - 1 * ($this->y % 2 == 0);
         --$this->y;
         return $this;
     }
@@ -85,5 +85,17 @@ class Tile implements JsonSerializable
             'x' => $this->x,
             'y' => $this->y,
         ];
+    }
+
+    // TODO: still to test
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    // TODO: still to test
+    public function getY()
+    {
+        return $this->y;
     }
 }

@@ -34,6 +34,19 @@ class MapTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testWithDifferentCenter()
+    {
+        $center = new Tile(-1, -1);
+        $map = new Map($center, 2);
+        $this->assertEquals(
+            [
+                [[-1, -1], 0],
+                [[0, -1], 1],
+            ],
+            $map->getAllTiles()
+        );
+    }
+
     public function testThreeRounds()
     {
         $map = new Map(new Tile(0, 0), 3);
