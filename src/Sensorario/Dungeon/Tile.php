@@ -86,4 +86,16 @@ class Tile implements JsonSerializable
             'y' => $this->y,
         ];
     }
+
+    // TODO: still to test
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    // TODO: still to test
+    public function getY()
+    {
+        return $this->y;
+    }
 }
