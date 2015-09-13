@@ -38,12 +38,17 @@ class MapTest extends PHPUnit_Framework_TestCase
     {
         $center = new Tile(-1, -1);
         $map = new Map($center, 2);
+
+        $tiles = $map->getAllTiles();
+
         $this->assertEquals(
-            [
-                [[-1, -1], 0],
-                [[0, -1], 1],
-            ],
-            $map->getAllTiles()
+            [[-1, -1], 0],
+            $tiles[0]
+        );
+
+        $this->assertEquals(
+            [[0, -1], 1],
+            $tiles[1]
         );
     }
 

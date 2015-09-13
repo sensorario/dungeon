@@ -32,6 +32,11 @@ abstract class Dungeon
         return $this->tiles;
     }
 
+    public function tiles()
+    {
+        return $this->tiles;
+    }
+
     public function setTileDistance($index, $distance)
     {
         $this->tiles[$index][self::DISTANCE] = $distance;
