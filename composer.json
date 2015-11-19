@@ -9,9 +9,9 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "Sensorario\\Dungeon": "src/"
-        }
+        "classmap": [{
+            "": "src/"
+        }]
     },
     "require": {
         "phpunit/phpunit": "4.4.4"
