@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Sensorario\Dungeon;
+namespace Sensorario\Dungeon\Test\Sensorario\Dungeon;
 
 use PHPUnit_Framework_TestCase;
 use Sensorario\Dungeon\LittleMap;

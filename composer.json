@@ -9,11 +9,16 @@
         }
     ],
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Sensorario\\Dungeon": "src/"
         }
     },
     "require": {
         "phpunit/phpunit": "4.4.4"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
     }
 }
