@@ -14,7 +14,8 @@
         }]
     },
     "require": {
-        "phpunit/phpunit": "4.4.4"
+        "phpunit/phpunit": "4.4.4",
+        "sensorario/value-object": "^2.2"
     },
     "extra": {
         "branch-alias": {

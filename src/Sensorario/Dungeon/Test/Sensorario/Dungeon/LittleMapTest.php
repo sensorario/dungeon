@@ -42,8 +42,8 @@ class LittleMapTest extends PHPUnit_Framework_TestCase
 
     public function testConstructor()
     {
-        $littleMap = new LittleMap(new Tile(3, 4), 1);
-        $map = new Map(new Tile(3, 4), 1);
+        $littleMap = new LittleMap(Tile::withCoords(3, 4), 1);
+        $map = new Map(Tile::withCoords(3, 4), 1);
         $this->assertEquals($littleMap->getAllTiles()[0], $map->getAllTiles()[0]);
     }
 }
