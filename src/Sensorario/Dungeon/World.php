@@ -25,7 +25,7 @@ class World
     public function __construct($name)
     {
         $this->name = $name;
-        $this->map = new Map(new Tile(0, 0), 3);
+        $this->map = new Map(Tile::withCoords(0, 0), 3);
     }
 
     public function getName()
@@ -79,7 +79,7 @@ class World
         $roundToBuild = 2;
         $map = $this->getMap();
 
-        $position = new Tile(
+        $position = Tile::withCoords(
             $map->getAllTiles()[$index][self::COORDINATES][self::X],
             $map->getAllTiles()[$index][self::COORDINATES][self::Y]
         );

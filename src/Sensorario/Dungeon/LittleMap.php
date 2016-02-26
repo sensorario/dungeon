@@ -11,7 +11,7 @@ class LittleMap extends Dungeon implements JsonSerializable
     public function __construct(Tile $position = null, $rounds = 3)
     {
         if (!$position) {
-            $position = new Tile(0, 0);
+            $position = Tile::withCoords(0, 0);
         }
 
         $this->coreIsBuilt = false;

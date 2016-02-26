@@ -45,25 +45,25 @@ class WorldTest extends PHPUnit_Framework_TestCase
     {
         $world = new World('yagolands');
 
-        $this->assertFalse($world->getMap()->hasTile(new Tile(0, 3)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(1, 3)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 3)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 2)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 2)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(2, 1)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 1)));
-        $this->assertFalse($world->getMap()->hasTile(new Tile(3, 0)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(0, 3)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(1, 3)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(2, 3)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(2, 2)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(3, 2)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(2, 1)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(3, 1)));
+        $this->assertFalse($world->getMap()->hasTile(Tile::withCoords(3, 0)));
 
         $world->growAroundTile($world->getEdgeTile());
 
-        $this->assertTrue($world->getMap()->hasTile(new Tile(0, 3)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(1, 3)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 3)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 2)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 2)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(2, 1)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 1)));
-        $this->assertTrue($world->getMap()->hasTile(new Tile(3, 0)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(0, 3)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(1, 3)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(2, 3)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(2, 2)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(3, 2)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::withCoords(2, 1)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::will(3, 1)));
+        $this->assertTrue($world->getMap()->hasTile(Tile::will(3, 0)));
 
         $this->assertEquals(0, $world->getMap()->getTileDistanceByCoordinate(new Tile(1, 1)));
 

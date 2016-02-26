@@ -3,17 +3,30 @@
 namespace Sensorario\Dungeon;
 
 use JsonSerializable;
+use Sensorario\ValueObject\ValueObject;
 
-class Tile implements JsonSerializable
+class Tile
+    extends ValueObject
+    implements JsonSerializable
 {
     protected $x;
 
     protected $y;
 
-    public function __construct($x = 0, $y = 0)
+    public static function mandatory()
     {
-        $this->x = $x;
-        $this->y = $y;
+        return [
+            'x',
+            'y',
+        ];
+    }
+
+    public static function withCoords($x = 0, $y = 0)
+    {
+        return new self([
+            'x' => $x,
+            'y' => $y,
+        ]);
     }
 
     public function getCoordinates()
